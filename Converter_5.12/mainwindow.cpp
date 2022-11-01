@@ -70,15 +70,6 @@ void MainWindow::on_actionOpen_original_triggered()
             ui->textEdit->setAcceptRichText(false);
             ui->textEdit->setText(text);
 
-            /*
-            QString str = "";
-            while (!File.atEnd()) {
-                str += in.readLine() + "\n";
-            }
-            File.close();
-            ui->textEdit->setAcceptRichText(false);
-            ui->textEdit->setText(str);
-            */
         }
         else {
             QMessageBox::information(this, tr("Error"), tr("Unable to open file."), QMessageBox::Ok);
@@ -178,9 +169,6 @@ void MainWindow::on_actionSave_converted_triggered()
 
 void MainWindow::on_actionIngush_with_original_triggered()
 {
-    lang = "Ingush";
-    addorig = "True";
-
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -190,6 +178,9 @@ void MainWindow::on_actionIngush_with_original_triggered()
     ui->textEdit->setAcceptRichText(false);
     ui->textEdit->setText(text);
     File1.close();
+
+    lang = "Ingush";
+    addorig = "True";
 
     converter_from_original(lang, addorig);
 
@@ -209,9 +200,6 @@ void MainWindow::on_actionIngush_with_original_triggered()
 
 void MainWindow::on_actionIngush_without_original_triggered()
 {
-    lang = "Ingush";
-    addorig = "False";
-
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -221,6 +209,9 @@ void MainWindow::on_actionIngush_without_original_triggered()
     ui->textEdit->setAcceptRichText(false);
     ui->textEdit->setText(text);
     File1.close();
+
+    lang = "Ingush";
+    addorig = "False";
 
     converter_from_original(lang, addorig);
     sorter(lang, addorig);
@@ -241,9 +232,6 @@ void MainWindow::on_actionIngush_without_original_triggered()
 
 void MainWindow::on_actionAvar_with_original_triggered()
 {
-    lang = "Avar";
-    addorig = "True";
-
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -253,6 +241,9 @@ void MainWindow::on_actionAvar_with_original_triggered()
     ui->textEdit->setAcceptRichText(false);
     ui->textEdit->setText(text);
     File1.close();
+
+    lang = "Avar";
+    addorig = "True";
 
     converter_from_original(lang, addorig);
 
@@ -272,9 +263,6 @@ void MainWindow::on_actionAvar_with_original_triggered()
 
 void MainWindow::on_actionAvar_without_original_triggered()
 {
-    lang = "Avar";
-    addorig = "False";
-
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -284,6 +272,9 @@ void MainWindow::on_actionAvar_without_original_triggered()
     ui->textEdit->setAcceptRichText(false);
     ui->textEdit->setText(text);
     File1.close();
+
+    lang = "Avar";
+    addorig = "False";
 
     converter_from_original(lang, addorig);
     sorter(lang, addorig);
@@ -304,9 +295,6 @@ void MainWindow::on_actionAvar_without_original_triggered()
 
 void MainWindow::on_actionChechen_with_original_triggered()
 {
-    lang = "Chechen";
-    addorig = "True";
-
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -316,6 +304,9 @@ void MainWindow::on_actionChechen_with_original_triggered()
     ui->textEdit->setAcceptRichText(false);
     ui->textEdit->setText(text);
     File1.close();
+
+    lang = "Chechen";
+    addorig = "True";
 
     converter_from_original(lang, addorig);
 
@@ -335,9 +326,6 @@ void MainWindow::on_actionChechen_with_original_triggered()
 
 void MainWindow::on_actionChechen_without_original_triggered()
 {
-    lang = "Chechen";
-    addorig = "False";
-
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -347,6 +335,9 @@ void MainWindow::on_actionChechen_without_original_triggered()
     ui->textEdit->setAcceptRichText(false);
     ui->textEdit->setText(text);
     File1.close();
+
+    lang = "Chechen";
+    addorig = "False";
 
     converter_from_original(lang, addorig);
     sorter(lang, addorig);

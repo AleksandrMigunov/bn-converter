@@ -8,4 +8,4 @@
 //public:
 void converter_from_original (QString lang, QString addorig);
 void sorter (QString lang, QString addorig);
-void experimental();
+QString toCamelCase(const QString& s);

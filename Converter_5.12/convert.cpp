@@ -3,31 +3,6 @@
 #include <QRegExp>
 #include <QMessageBox>
 
-void experimental() {
-
-    QString f1 = "Experimental.txt";
-    QString f2 = "BibleNames.txt";
-    QFile File1(f1);  // This file is for writing results.
-    QFile File2(f2);  // This file contains data and will be opened only for reading.
-    File1.open(QFile::WriteOnly | QFile::Text);
-    QTextStream out(&File1);
-    out.setCodec("UTF-8");
-    File2.open(QFile::ReadOnly | QFile::Text);
-    QTextStream in(&File2);
-    in.setCodec("UTF-8");
-
-    QString str;
-    while (!File2.atEnd()) {
-        str = in.readLine();
-        out << str << endl;
-    }
-
-    File1.flush();
-    File1.close();
-    File2.close();
-
-}
-
 void converter_from_original (QString lang, QString addorig) {
     QString f1 = "";
     if (addorig == "True") {
@@ -108,9 +83,9 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx14, "Эв");
         QRegExp rgx15("Ε(ὑ|ὓ|ὕ|ὗ|ύ)");
         str.replace(rgx15, "ХӀев");
-        QRegExp rgx16("\\Bε(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ύ)");
+        QRegExp rgx16("\\bε(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ύ)");
         str.replace(rgx16, "эв");
-        QRegExp rgx17("\\Bε(ὑ|ὓ|ὕ|ὗ|ύ)");
+        QRegExp rgx17("\\bε(ὑ|ὓ|ὕ|ὗ|ύ)");
         str.replace(rgx17, "хӀев");
         QRegExp rgx18("ε(υ|ὺ|ύ|ῦ|ύ)");
         str.replace(rgx18, "ев");
@@ -118,9 +93,9 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx19, "Эв");
         QRegExp rgx20("Η(ὑ|ὓ|ὕ|ὗ|ύ)");
         str.replace(rgx20, "ХӀев");
-        QRegExp rgx21("\\Bη(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ύ)");
+        QRegExp rgx21("\\bη(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ύ)");
         str.replace(rgx21, "эв");
-        QRegExp rgx22("\\Bη(ὑ|ὓ|ὕ|ὗ|ύ)");
+        QRegExp rgx22("\\bη(ὑ|ὓ|ὕ|ὗ|ύ)");
         str.replace(rgx22, "хӀев");
         QRegExp rgx23("η(υ|ὺ|ύ|ῦ|ύ)");
         str.replace(rgx23, "ев");
@@ -144,9 +119,9 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx32, "Эй");
         QRegExp rgx33("Ε(ἱ|ἳ|ἵ|ἷ|ί)");
         str.replace(rgx33, "ХӀей");
-        QRegExp rgx34("\\Bε(ι|ἰ|ἲ|ἴ|ἶ|ὶ|ί|ῖ|ί)");
+        QRegExp rgx34("\\bε(ι|ἰ|ἲ|ἴ|ἶ|ὶ|ί|ῖ|ί)");
         str.replace(rgx34, "эй");
-        QRegExp rgx35("\\Bε(ἱ|ἳ|ἵ|ἷ|ί)");
+        QRegExp rgx35("\\bε(ἱ|ἳ|ἵ|ἷ|ί)");
         str.replace(rgx35, "хӀей");
         QRegExp rgx36("ε(ι|ὶ|ί|ῖ|ί)");
         str.replace(rgx36, "ей");
@@ -196,9 +171,9 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx53, "Э");
         QRegExp rgx54("(Ἑ|Ἓ|Ἕ)");
         str.replace(rgx54, "ХӀе");
-        QRegExp rgx55("\\B(ε|ἐ|ἒ|ἔ|έ)");
+        QRegExp rgx55("\\b(ε|ἐ|ἒ|ἔ|έ)");
         str.replace(rgx55, "э");
-        QRegExp rgx56("\\B(ἑ|ἓ|ἕ)");
+        QRegExp rgx56("\\b(ἑ|ἓ|ἕ)");
         str.replace(rgx56, "хӀе");
         QRegExp rgx57("(ε|ὲ|έ|έ)");
         str.replace(rgx57, "е");
@@ -206,9 +181,9 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx58, "Э");
         QRegExp rgx59("(Ἡ|Ἣ|Ἥ|Ἧ)");
         str.replace(rgx59, "ХӀе");
-        QRegExp rgx60("\\B(η|ἠ|ἢ|ἤ|ἦ|ᾐ|ᾒ|ᾔ|ᾖ|ή)");
+        QRegExp rgx60("\\b(η|ἠ|ἢ|ἤ|ἦ|ᾐ|ᾒ|ᾔ|ᾖ|ή)");
         str.replace(rgx60, "э");
-        QRegExp rgx61("\\B(ἡ|ἣ|ἥ|ἧ|ᾑ|ᾓ|ᾕ|ᾗ)");
+        QRegExp rgx61("\\b(ἡ|ἣ|ἥ|ἧ|ᾑ|ᾓ|ᾕ|ᾗ)");
         str.replace(rgx61, "хӀе");
         QRegExp rgx62("(η|ὴ|ή|ῆ|ῃ|ῂ|ῄ|ῇ|ή)");
         str.replace(rgx62, "е");
@@ -308,9 +283,9 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace("ψ", "пс");
 
         // correction of Cyrillic text
-        QRegExp rgx84("\\BЕ");
+        QRegExp rgx84("\\bЕ");
         str.replace(rgx84, "Э");
-        QRegExp rgx85("\\Bе");
+        QRegExp rgx85("\\bе");
         str.replace(rgx85, "э");
         QRegExp rgx86("(А|а|Э|е|э|И|и|О|о|У|у)е");
         str.replace(rgx86, "\\1э");
@@ -355,14 +330,14 @@ void converter_from_original (QString lang, QString addorig) {
         // before voiceless consonants ef
         QRegExp rgx98("Ε(υ|ὐ|ὒ|ὔ|ὖ|ὑ|ὓ|ὕ|ὗ|ύ)(Θ|Φ|κ|ξ|π|σ|ς|τ|χ|ψ)");
         str.replace(rgx98, "Эф\\2");
-        QRegExp rgx99("\\Bε(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ὑ|ὓ|ὕ|ὗ|ύ)(Θ|Φ|κ|ξ|π|σ|ς|τ|χ|ψ)");
+        QRegExp rgx99("\\bε(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ὑ|ὓ|ὕ|ὗ|ύ)(Θ|Φ|κ|ξ|π|σ|ς|τ|χ|ψ)");
         str.replace(rgx99, "эф\\2");
         QRegExp rgx100("ε(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ὑ|ὓ|ὕ|ὗ|ύ)(Θ|Φ|κ|ξ|π|σ|ς|τ|χ|ψ)");
         str.replace(rgx100, "еф\\2");
         // before voiced conconants and vowels ev
         QRegExp rgx101("Ε(υ|ὐ|ὒ|ὔ|ὖ|ὑ|ὓ|ὕ|ὗ|ύ)");
         str.replace(rgx101, "Эв");
-        QRegExp rgx102("\\Bε(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ὑ|ὓ|ὕ|ὗ|ύ)");
+        QRegExp rgx102("\\bε(υ|ὐ|ὒ|ὔ|ὖ|ὺ|ύ|ῦ|ὑ|ὓ|ὕ|ὗ|ύ)");
         str.replace(rgx102, "эв");
         QRegExp rgx103("ε(υ|ὺ|ύ|ῦ|ύ)");
         str.replace(rgx103, "ев");
@@ -382,7 +357,7 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx109, "у");
         QRegExp rgx110("Α(ι|ἰ|ἲ|ἴ|ἶ|ἱ|ἳ|ἷ|ἷ|ί)");
         str.replace(rgx110, "Э");
-        QRegExp rgx111("\\Bα(ι|ἰ|ἲ|ἴ|ἶ|ὶ|ί|ῖ|ἱ|ἳ|ἷ|ἷ|ί)");
+        QRegExp rgx111("\\bα(ι|ἰ|ἲ|ἴ|ἶ|ὶ|ί|ῖ|ἱ|ἳ|ἷ|ἷ|ί)");
         str.replace(rgx111, "э");
         QRegExp rgx112("α(ι|ὶ|ί|ῖ|ί)");
         str.replace(rgx112, "е");
@@ -406,7 +381,7 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx120, "а");
         QRegExp rgx121("(Ε|Ἐ|Ἒ|Ἔ|Ἑ|Ἓ|Ἕ)");
         str.replace(rgx121, "Э");
-        QRegExp rgx122("\\B(ε|ἐ|ἒ|ἔ|ἑ|ἓ|ἕ|έ)");
+        QRegExp rgx122("\\b(ε|ἐ|ἒ|ἔ|ἑ|ἓ|ἕ|έ)");
         str.replace(rgx122, "э");
         QRegExp rgx123("(ε|ὲ|έ|έ)");
         str.replace(rgx123, "е");
@@ -480,9 +455,9 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace("ψ", "пс");
 
         // correction of Cyrillic text
-        QRegExp rgx139("\\BЕ");
+        QRegExp rgx139("\\bЕ");
         str.replace(rgx139, "Э");
-        QRegExp rgx140("\\Bе");
+        QRegExp rgx140("\\bе");
         str.replace(rgx140, "э");
         QRegExp rgx141("(А|а|Э|е|э|И|и|О|о|У|у)е");
         str.replace(rgx141, "\\1э");
@@ -495,6 +470,11 @@ void converter_from_original (QString lang, QString addorig) {
 
         // Step 1: Conversion into "pseudo-transliteration"
         // Hebrew cantilation marks (accents)
+
+        ////////////// experiment //////
+        //str = str.reverse();
+        //std::reverse(str.begin(), str.end());
+
         QRegExp rgx142("(\u05C3|\u0591|\u0592|\u0593)");
         str.replace(rgx142, "");    // removal of accents
         QRegExp rgx143("(\u0594|\u0595|\u0596|\u0597)");
@@ -555,82 +535,69 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace("ת", "т");
 
         // Hebrew points
-        str.replace("ְ", "Э"); // sheva // will be changed to е or no vowel
-        str.replace("ֱ", "е"); //hataf segol // will be changed to е or э
-        str.replace("ֲ", "а"); // hataf patah // will be changed to а
-        str.replace("ֳ", "о"); // hataf qamats // will be changed to о
-        str.replace("ִ", "и"); // hiriq
-        str.replace("ֵ", "е"); // tsere
-        str.replace("ֶ", "е"); // segol
-        str.replace("ַ", "а"); // patah
-        str.replace("ָ", "а"); // qamats
+        str.replace("\u05B0", "Э"); // sheva // will be changed to е or no vowel
+        str.replace("\u05B1", "е"); //hataf segol // will be changed to е or э
+        str.replace("\u05B2", "а"); // hataf patah // will be changed to а
+        str.replace("\u05B3", "о"); // hataf qamats // will be changed to о
+        str.replace("\u05B4", "и"); // hiriq
+        str.replace("\u05B5", "е"); // tsere
+        str.replace("\u05B6", "е"); // segol
+        str.replace("\u05B7", "а"); // patah
+        str.replace("\u05B8", "а"); // qamats
         // it should be a or o, but without meteg there is no way to discern
-        str.replace("ֹ", "о"); // holam
-        str.replace("ֻ", "у"); // qubuts
+        str.replace("\u05B9", "о"); // holam
+        str.replace("\u05BB", "у"); // qubuts
 
-        QRegExp rgx151("\u05BA");
-        str.replace(rgx151, "HOLAM HASER for VAV "); // checking if it is used here
-        QRegExp rgx152("\u05BC");
-        str.replace(rgx152, "Д"); // "DAGESH (or MAPIQ)"
-        QRegExp rgx153("\u05BD");
-        str.replace(rgx153, "METEG "); // checking if it is used here
-        QRegExp rgx154("\u05BE");
-        str.replace(rgx154, "MAQAF "); // checking if it is used here
-        QRegExp rgx155("\u05BF");
-        str.replace(rgx155, "RAFE "); // checking if it is used here
-        QRegExp rgx156("\u05C0");
-        str.replace(rgx156, "PASEQ "); // checking if it is used here
-        QRegExp rgx157("\u05C1");
-        str.replace(rgx157, "Ш"); // "SHIN DOT"
-        QRegExp rgx158("\u05C2");
-        str.replace(rgx158, "С"); // "SIN DOT"
-        QRegExp rgx159("\u05C3");
-        str.replace(rgx159, "SOF PASUQ "); // checking if it is used here
-        QRegExp rgx160("\u05C4");
-        str.replace(rgx160, "UPPER DOT "); // checking if it is used here
-        QRegExp rgx161("\u05C5");
-        str.replace(rgx161, "LOWER DOT "); // checking if it is used here
-        QRegExp rgx162("\u05C6");
-        str.replace(rgx162, "NUN HAFUKHA "); // checking if it is used here
-        QRegExp rgx163("\u05C7");
-        str.replace(rgx163, "QAMATS QATAN "); // checking if it is used here
+        str.replace("\u05BA", "HOLAM HASER for VAV "); // checking if it is used here
+        str.replace("\u05BC", "Д"); // "DAGESH (or MAPIQ)"
+        str.replace("\u05BD", "METEG "); // checking if it is used here
+        str.replace("\u05BE", "MAQAF "); // checking if it is used here
+        str.replace("\u05BF", "RAFE "); // checking if it is used here
+        str.replace("\u05C0", "PASEQ "); // checking if it is used here
+        str.replace("\u05C1", "Ш"); // "SHIN DOT"
+        str.replace("\u05C2", "С"); // "SIN DOT"
+        str.replace("\u05C3", "SOF PASUQ "); // checking if it is used here
+        str.replace("\u05C4", "UPPER DOT "); // checking if it is used here
+        str.replace("\u05C5", "LOWER DOT "); // checking if it is used here
+        str.replace("\u05C6", "NUN HAFUKHA "); // checking if it is used here
+        str.replace("\u05C7", "QAMATS QATAN "); // checking if it is used here
 
         // Step 2: Conversion into normal transliteration
 
         // bet
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx164("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвД");
+            QRegExp rgx164("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвД");
             str.replace(rgx164, "\\1ебб");
-            QRegExp rgx165("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвДЭ");
+            QRegExp rgx165("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвДЭ");
             str.replace(rgx165, "\\1еббе");
-            QRegExp rgx166("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвЭД");
+            QRegExp rgx166("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвЭД");
             str.replace(rgx166, "\\1еббе");
-            QRegExp rgx167("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эв(и|е|а|о|у)Д");
+            QRegExp rgx167("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эв(и|е|а|о|у)Д");
             str.replace(rgx167, "\\1ебб\\2");
         }
         else if (lang == "Avar") {
-            QRegExp rgx168("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвД");
+            QRegExp rgx168("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвД");
             str.replace(rgx168, "\\1ебб");
-            QRegExp rgx169("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвДЭ");
+            QRegExp rgx169("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвДЭ");
             str.replace(rgx169, "\\1еббе");
-            QRegExp rgx170("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвЭД");
+            QRegExp rgx170("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭвЭД");
             str.replace(rgx170, "\\1еббе");
-            QRegExp rgx171("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эв(и|е|а|о|у)Д");
+            QRegExp rgx171("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эв(и|е|а|о|у)Д");
             str.replace(rgx171, "\\1ебб\\2");
         }
-        QRegExp rgx172("\\BвД");
+        QRegExp rgx172("\\bвД");
         str.replace(rgx172, "б"); // in the beginning of a word
-        QRegExp rgx173("\\BвЭД");
+        QRegExp rgx173("\\bвЭД");
         str.replace(rgx173, "бе"); // in the beginning with sheva
-        QRegExp rgx174("\\BвДЭ");
+        QRegExp rgx174("\\bвДЭ");
         str.replace(rgx174, "бе"); // in the beginning with sheva
-        QRegExp rgx175("\\Bв(и|е|а|о|у)Д");
+        QRegExp rgx175("\\bв(и|е|а|о|у)Д");
         str.replace(rgx175, "б\\1"); // in the beginning of a word
-        QRegExp rgx176("вД\\B");
+        QRegExp rgx176("вД\\b");
         str.replace(rgx176, "б"); // in the end of a word
-        QRegExp rgx177("вЭД\\B");
+        QRegExp rgx177("вЭД\\b");
         str.replace(rgx177, "б");
-        QRegExp rgx178("вДЭ\\B");
+        QRegExp rgx178("вДЭ\\b");
         str.replace(rgx178, "б");
         QRegExp rgx179("\\BвД\\B");
         str.replace(rgx179, "бб"); // in the middle of a word
@@ -643,27 +610,27 @@ void converter_from_original (QString lang, QString addorig) {
 
         // gimel
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx183("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀД");
+            QRegExp rgx183("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀД");
             str.replace(rgx183, "\\1егг");
-            QRegExp rgx184("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀДЭ");
+            QRegExp rgx184("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀДЭ");
             str.replace(rgx184, "\\1егге");
-            QRegExp rgx185("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀЭД");
+            QRegExp rgx185("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀЭД");
             str.replace(rgx185, "\\1егге");
-            QRegExp rgx186("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀ(и|е|а|о|у)Д");
+            QRegExp rgx186("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгӀ(и|е|а|о|у)Д");
             str.replace(rgx186, "\\1егг\\2");
-            QRegExp rgx187("\\BгӀД");
+            QRegExp rgx187("\\bгӀД");
             str.replace(rgx187, "г"); // in the beginning of a word
-            QRegExp rgx188("\\BгӀЭД");
+            QRegExp rgx188("\\bгӀЭД");
             str.replace(rgx188, "ге"); // in the beginning with sheva
-            QRegExp rgx189("\\BгӀДЭ");
+            QRegExp rgx189("\\bгӀДЭ");
             str.replace(rgx189, "ге"); // in the beginning with sheva
-            QRegExp rgx190("\\BгӀ(и|е|а|о|у)Д");
+            QRegExp rgx190("\\bгӀ(и|е|а|о|у)Д");
             str.replace(rgx190, "г\\1"); // in the beginning of a word
-            QRegExp rgx191("гӀД\\B");
+            QRegExp rgx191("гӀД\\b");
             str.replace(rgx191, "г"); // in the end of a word
-            QRegExp rgx192("гӀЭД\\B");
+            QRegExp rgx192("гӀЭД\\b");
             str.replace(rgx192, "г");
-            QRegExp rgx193("гӀДЭ\\B");
+            QRegExp rgx193("гӀДЭ\\b");
             str.replace(rgx193, "г");
             QRegExp rgx194("\\BгӀД\\B");
             str.replace(rgx194, "гг"); // in the middle of a word
@@ -675,27 +642,27 @@ void converter_from_original (QString lang, QString addorig) {
             str.replace(rgx197, "гг\\1");
         }
         else if (lang == "Avar") {
-            QRegExp rgx198("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгъД");
+            QRegExp rgx198("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгъД");
             str.replace(rgx198, "\\1егг");
-            QRegExp rgx199("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгъДЭ");
+            QRegExp rgx199("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгъДЭ");
             str.replace(rgx199, "\\1егге");
-            QRegExp rgx200("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгъЭД");
+            QRegExp rgx200("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭгъЭД");
             str.replace(rgx200, "\\1егге");
-            QRegExp rgx201("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эгъ(и|е|а|о|у)Д");
+            QRegExp rgx201("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эгъ(и|е|а|о|у)Д");
             str.replace(rgx201, "\\1егг\\2");
-            QRegExp rgx202("\\BгъД");
+            QRegExp rgx202("\\bгъД");
             str.replace(rgx202, "г"); // in the beginning of a word
-            QRegExp rgx203("\\BгъЭД");
+            QRegExp rgx203("\\bгъЭД");
             str.replace(rgx203, "ге"); // in the beginning with sheva
-            QRegExp rgx204("\\BгъДЭ");
+            QRegExp rgx204("\\bгъДЭ");
             str.replace(rgx204, "ге"); // in the beginning with sheva
-            QRegExp rgx205("\\Bгъ(и|е|а|о|у)Д");
+            QRegExp rgx205("\\bгъ(и|е|а|о|у)Д");
             str.replace(rgx205, "г\\1"); // in the beginning of a word
-            QRegExp rgx206("гъД\\B");
+            QRegExp rgx206("гъД\\b");
             str.replace(rgx206, "г"); // in the end of a word
-            QRegExp rgx207("гъЭД\\B");
+            QRegExp rgx207("гъЭД\\b");
             str.replace(rgx207, "г");
-            QRegExp rgx208("гъДЭ\\B");
+            QRegExp rgx208("гъДЭ\\b");
             str.replace(rgx208, "г");
             QRegExp rgx209("\\BгъД\\B");
             str.replace(rgx209, "гг"); // in the middle of a word
@@ -709,38 +676,38 @@ void converter_from_original (QString lang, QString addorig) {
 
         // dalet
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx213("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдД");
+            QRegExp rgx213("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдД");
             str.replace(rgx213, "\\1едд");
-            QRegExp rgx214("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдДЭ");
+            QRegExp rgx214("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдДЭ");
             str.replace(rgx214, "\\1едде");
-            QRegExp rgx215("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдЭД");
+            QRegExp rgx215("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдЭД");
             str.replace(rgx215, "\\1едде");
-            QRegExp rgx216("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эд(и|е|а|о|у)Д");
+            QRegExp rgx216("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эд(и|е|а|о|у)Д");
             str.replace(rgx216, "\\1едд\\2");
         }
         else if (lang == "Avar") {
-            QRegExp rgx217("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдД");
+            QRegExp rgx217("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдД");
             str.replace(rgx217, "\\1едд");
-            QRegExp rgx218("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдДЭ");
+            QRegExp rgx218("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдДЭ");
             str.replace(rgx218, "\\1едде");
-            QRegExp rgx219("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдЭД");
+            QRegExp rgx219("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭдЭД");
             str.replace(rgx219, "\\1едде");
-            QRegExp rgx220("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эд(и|е|а|о|у)Д");
+            QRegExp rgx220("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эд(и|е|а|о|у)Д");
             str.replace(rgx220, "\\1едд\\2");
         }
-        QRegExp rgx221("\\BдД");
+        QRegExp rgx221("\\bдД");
         str.replace(rgx221, "д"); // in the beginning of a word
-        QRegExp rgx222("\\BдЭД");
+        QRegExp rgx222("\\bдЭД");
         str.replace(rgx222, "де"); // in the beginning with sheva
-        QRegExp rgx223("\\BдДЭ");
+        QRegExp rgx223("\\bдДЭ");
         str.replace(rgx223, "де"); // in the beginning with sheva
-        QRegExp rgx224("\\Bд(и|е|а|о|у)Д");
+        QRegExp rgx224("\\bд(и|е|а|о|у)Д");
         str.replace(rgx224, "д\\1"); // in the beginning of a word
-        QRegExp rgx225("дД\\B");
+        QRegExp rgx225("дД\\b");
         str.replace(rgx225, "д"); // in the end of a word
-        QRegExp rgx226("дЭД\\B");
+        QRegExp rgx226("дЭД\\b");
         str.replace(rgx226, "д");
-        QRegExp rgx227("дДЭ\\B");
+        QRegExp rgx227("дДЭ\\b");
         str.replace(rgx227, "д");
         QRegExp rgx228("\\BдД\\B");
         str.replace(rgx228, "дд"); // in the middle of a word
@@ -753,38 +720,38 @@ void converter_from_original (QString lang, QString addorig) {
 
         // kaph and final kaph
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx232("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхД");
+            QRegExp rgx232("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхД");
             str.replace(rgx232, "\\1екк");
-            QRegExp rgx233("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхДЭ");
+            QRegExp rgx233("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхДЭ");
             str.replace(rgx233, "\\1екк");
-            QRegExp rgx234("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхЭД");
+            QRegExp rgx234("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхЭД");
             str.replace(rgx234, "\\1екке");
-            QRegExp rgx235("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эх(и|е|а|о|у)Д");
+            QRegExp rgx235("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эх(и|е|а|о|у)Д");
             str.replace(rgx235, "\\1ехх\\2");
         }
         else if (lang == "Avar") {
-            QRegExp rgx236("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхД");
+            QRegExp rgx236("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхД");
             str.replace(rgx236, "\\1екк");
-            QRegExp rgx237("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхДЭ");
+            QRegExp rgx237("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхДЭ");
             str.replace(rgx237, "\\1екк");
-            QRegExp rgx238("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхЭД");
+            QRegExp rgx238("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭхЭД");
             str.replace(rgx238, "\\1екке");
-            QRegExp rgx239("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эх(и|е|а|о|у)Д");
+            QRegExp rgx239("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эх(и|е|а|о|у)Д");
             str.replace(rgx239, "\\1ехх\\2");
         }
-        QRegExp rgx240("\\BхД");
+        QRegExp rgx240("\\bхД");
         str.replace(rgx240, "к"); // in the beginning of a word
-        QRegExp rgx241("\\BхЭД");
+        QRegExp rgx241("\\bхЭД");
         str.replace(rgx241, "ке"); // in the beginning with sheva
-        QRegExp rgx242("\\BхДЭ");
+        QRegExp rgx242("\\bхДЭ");
         str.replace(rgx242, "ке"); // in the beginning with sheva
-        QRegExp rgx243("\\Bх(и|е|а|о|у)Д");
+        QRegExp rgx243("\\bх(и|е|а|о|у)Д");
         str.replace(rgx243, "к\\1"); // in the beginning of a word
-        QRegExp rgx244("хД\\B");
+        QRegExp rgx244("хД\\b");
         str.replace(rgx244, "к"); // in the end of a word
-        QRegExp rgx245("хЭД\\B");
+        QRegExp rgx245("хЭД\\b");
         str.replace(rgx245, "к");
-        QRegExp rgx246("хДЭ\\B");
+        QRegExp rgx246("хДЭ\\b");
         str.replace(rgx246, "к");
         QRegExp rgx247("\\BхД\\B");
         str.replace(rgx247, "кк"); // in the middle of a word
@@ -794,43 +761,43 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace(rgx249, "кке");
         QRegExp rgx250("\\Bх(и|е|а|о|у)Д\\B");
         str.replace(rgx250, "кк\\1");
-        QRegExp rgx251("хЭ\\B");
+        QRegExp rgx251("хЭ\\b");
         str.replace(rgx251, "х"); // in the end
 
         // pe and final pe
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx252("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфД");
+            QRegExp rgx252("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфД");
             str.replace(rgx252, "\\1епп");
-            QRegExp rgx253("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфДЭ");
+            QRegExp rgx253("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфДЭ");
             str.replace(rgx253, "\\1еппе");
-            QRegExp rgx254("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфЭД");
+            QRegExp rgx254("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфЭД");
             str.replace(rgx254, "\\1еппе");
-            QRegExp rgx255("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эф(и|е|а|о|у)Д");
+            QRegExp rgx255("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эф(и|е|а|о|у)Д");
             str.replace(rgx255, "\\1епп\\2");
         }
         else if (lang == "Avar") {
-            QRegExp rgx256("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфД");
+            QRegExp rgx256("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфД");
             str.replace(rgx256, "\\1епп");
-            QRegExp rgx257("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфДЭ");
+            QRegExp rgx257("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфДЭ");
             str.replace(rgx257, "\\1еппе");
-            QRegExp rgx258("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфЭД");
+            QRegExp rgx258("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭфЭД");
             str.replace(rgx258, "\\1еппе");
-            QRegExp rgx259("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эф(и|е|а|о|у)Д");
+            QRegExp rgx259("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эф(и|е|а|о|у)Д");
             str.replace(rgx259, "\\1епп\\2");
         }
-        QRegExp rgx260("\\BфД");
+        QRegExp rgx260("\\bфД");
         str.replace(rgx260, "п"); // in the beginning of a word
-        QRegExp rgx261("\\BфЭД");
+        QRegExp rgx261("\\bфЭД");
         str.replace(rgx261, "пе"); // in the beginning with sheva
-        QRegExp rgx262("\\BфДЭ");
+        QRegExp rgx262("\\bфДЭ");
         str.replace(rgx262, "пе"); // in the beginning with sheva
-        QRegExp rgx263("\\Bф(и|е|а|о|у)Д");
+        QRegExp rgx263("\\bф(и|е|а|о|у)Д");
         str.replace(rgx263, "п\\1"); // in the beginning of a word
-        QRegExp rgx264("фД\\B");
+        QRegExp rgx264("фД\\b");
         str.replace(rgx264, "п"); // in the end of a word
-        QRegExp rgx265("фЭД\\B");
+        QRegExp rgx265("фЭД\\b");
         str.replace(rgx265, "п");
-        QRegExp rgx266("фДЭ\\B");
+        QRegExp rgx266("фДЭ\\b");
         str.replace(rgx266, "п");
         QRegExp rgx267("\\BфД\\B");
         str.replace(rgx267, "пп"); // in the middle of a word
@@ -843,38 +810,38 @@ void converter_from_original (QString lang, QString addorig) {
 
         // taw
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx271("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтД");
+            QRegExp rgx271("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтД");
             str.replace(rgx271, "\\1етт");
-            QRegExp rgx272("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтДЭ");
+            QRegExp rgx272("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтДЭ");
             str.replace(rgx272, "\\1етте");
-            QRegExp rgx273("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтЭД");
+            QRegExp rgx273("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтЭД");
             str.replace(rgx273, "\\1етте");
-            QRegExp rgx274("\\B(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эт(и|е|а|о|у)Д");
+            QRegExp rgx274("\\b(б|в|г|гӀ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эт(и|е|а|о|у)Д");
             str.replace(rgx274, "\\1етт\\2");
         }
         else if (lang == "Avar") {
-            QRegExp rgx275("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтД");
+            QRegExp rgx275("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтД");
             str.replace(rgx275, "\\1етт");
-            QRegExp rgx276("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтДЭ");
+            QRegExp rgx276("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтДЭ");
             str.replace(rgx276, "\\1етте");
-            QRegExp rgx277("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтЭД");
+            QRegExp rgx277("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)ЭтЭД");
             str.replace(rgx277, "\\1етте");
-            QRegExp rgx278("\\B(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эт(и|е|а|о|у)Д");
+            QRegExp rgx278("\\b(б|в|г|гъ|д|В|з|Т|й|к|х|л|м|н|с|п|ф|Ц|Ъ|р|ш|т)Эт(и|е|а|о|у)Д");
             str.replace(rgx278, "\\1етт\\2");
         }
-        QRegExp rgx279("\\BтД");
+        QRegExp rgx279("\\bтД");
         str.replace(rgx279, "т"); // in the beginning of a word
-        QRegExp rgx280("\\BтЭД");
+        QRegExp rgx280("\\bтЭД");
         str.replace(rgx280, "те"); // in the beginning with sheva
-        QRegExp rgx281("\\BтДЭ");
+        QRegExp rgx281("\\bтДЭ");
         str.replace(rgx281, "те"); // in the beginning with sheva
-        QRegExp rgx282("\\Bт(и|е|а|о|у)Д");
+        QRegExp rgx282("\\bт(и|е|а|о|у)Д");
         str.replace(rgx282, "т\\1"); // in the beginning of a word
-        QRegExp rgx283("тД\\B");
+        QRegExp rgx283("тД\\b");
         str.replace(rgx283, "т"); // in the end of a word
-        QRegExp rgx284("тЭД\\B");
+        QRegExp rgx284("тЭД\\b");
         str.replace(rgx284, "т");
-        QRegExp rgx285("тДЭ\\B");
+        QRegExp rgx285("тДЭ\\b");
         str.replace(rgx285, "т");
         QRegExp rgx286("\\BтД\\B");
         str.replace(rgx286, "тт"); // in the middle of a word
@@ -1032,21 +999,21 @@ void converter_from_original (QString lang, QString addorig) {
 
         // he
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx308("ХД\\B");
+            QRegExp rgx308("ХД\\b");
             str.replace(rgx308, "хӀ"); // with mappiq in the end
-            QRegExp rgx309("ХаД\\B");
+            QRegExp rgx309("ХаД\\b");
             str.replace(rgx309, "ахӀ"); // with mappiq and patach furtivum
-            QRegExp rgx310("ХДа\\B");
+            QRegExp rgx310("ХДа\\b");
             str.replace(rgx310, "ахӀ"); // with mappiq and patach furtivum
             QRegExp rgx311("Х\\B");
             str.replace(rgx311, "хӀ"); // not in the end (pronounced)
         }
         else if (lang == "Avar") {
-            QRegExp rgx312("ХД\\B");
+            QRegExp rgx312("ХД\\b");
             str.replace(rgx312, "гь"); // with mappiq in the end
-            QRegExp rgx313("ХаД\\B");
+            QRegExp rgx313("ХаД\\b");
             str.replace(rgx313, "агь"); // with mappiq and patach furtivum
-            QRegExp rgx314("ХДа\\B");
+            QRegExp rgx314("ХДа\\b");
             str.replace(rgx314, "агь"); // with mappiq and patach furtivum
             QRegExp rgx315("Х\\B");
             str.replace(rgx315, "гь"); // not in the end (pronounced)
@@ -1054,23 +1021,23 @@ void converter_from_original (QString lang, QString addorig) {
 
         // het
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx316("Ьа\\B");
+            QRegExp rgx316("Ьа\\b");
             str.replace(rgx316, "ахь"); // with patach furvitum
             str.replace("Ь", "хь");
         }
         else if (lang == "Avar") {
-            QRegExp rgx317("Ьа\\B");
+            QRegExp rgx317("Ьа\\b");
             str.replace(rgx317, "ахӀ"); // with patach furvitum
             str.replace("Ь", "хӀ");
         }
 
         // ayin
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx318("Ӏа\\B");
+            QRegExp rgx318("Ӏа\\b");
             str.replace(rgx318, "аӀ"); // with patach furvitum
         }
         else if (lang == "Avar") {
-            QRegExp rgx319("гӀа\\B");
+            QRegExp rgx319("гӀа\\b");
             str.replace(rgx319, "агӀ"); // with patach furvitum
         }
 
@@ -1091,11 +1058,11 @@ void converter_from_original (QString lang, QString addorig) {
         str.replace("ИЙ", "ий");
 
         // waw
-        QRegExp rgx323("\\BВД");
+        QRegExp rgx323("\\bВД");
         str.replace(rgx323, "у");
-        QRegExp rgx324("\\BВо");
+        QRegExp rgx324("\\bВо");
         str.replace(rgx324, "во");
-        QRegExp rgx325("\\BВЭ");
+        QRegExp rgx325("\\bВЭ");
         str.replace(rgx325, "ве");
         QRegExp rgx326("(и|е|а|о|у)ВД");
         str.replace(rgx326, "\\1вв");
@@ -1111,35 +1078,35 @@ void converter_from_original (QString lang, QString addorig) {
 
         // sheva
         if ((lang == "Ingush") || (lang == "Chechen")) {
-            QRegExp rgx329("\\B(б|в|г|гӀ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хь|хӀ|цӀ|ш|ъ|Ӏ)Э");
+            QRegExp rgx329("\\b(б|в|г|гӀ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хь|хӀ|цӀ|ш|ъ|Ӏ)Э");
             str.replace(rgx329, "\\1е");
             QRegExp rgx330("Э(б|в|г|гӀ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хь|хӀ|цӀ|ш|ъ|Ӏ)Э");
             str.replace(rgx330, "\\1е");
-            QRegExp rgx331("Э(б|в|г|гӀ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хь|хӀ|цӀ|ш|ъ|Ӏ)Э\\B");
+            QRegExp rgx331("Э(б|в|г|гӀ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хь|хӀ|цӀ|ш|ъ|Ӏ)Э\\b");
             str.replace(rgx331, "\\1");
         }
         else if (lang == "Avar") {
-            QRegExp rgx332("\\B(б|в|г|гъ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хӀ|гь|цӀ|ш|щ|ъ|гӀ|лъ)Э");
+            QRegExp rgx332("\\b(б|в|г|гъ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хӀ|гь|цӀ|ш|щ|ъ|гӀ|лъ)Э");
             str.replace(rgx332, "\\1е");
             QRegExp rgx333("Э(б|в|г|гъ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хӀ|гь|цӀ|ш|щ|ъ|гӀ|лъ)Э");
             str.replace(rgx333, "\\1е");
-            QRegExp rgx334("Э(б|в|г|гъ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хӀ|гь|цӀ|ш|щ|ъ|гӀ|лъ)Э\\B");
+            QRegExp rgx334("Э(б|в|г|гъ|д|з|й|к|къ|л|м|н|п|р|с|т|тӀ|ф|х|хӀ|гь|цӀ|ш|щ|ъ|гӀ|лъ)Э\\b");
             str.replace(rgx334, "\\1");
         }
         str.replace("Э", "");
 
         // aleph
-        QRegExp rgx335("\\Bъ");
+        QRegExp rgx335("\\bъ");
         str.replace(rgx335, ""); // aleph in the beginning (pronounced, but ъ is not used)
-        QRegExp rgx336("къ\\B");
+        QRegExp rgx336("къ\\b");
         str.replace(rgx336, "къъ"); // correction for къ in the end
         if (lang == "Avar") {
-            QRegExp rgx337("гъ\\B");
+            QRegExp rgx337("гъ\\b");
             str.replace(rgx337, "гъъ"); // correction for гъ in the end
-            QRegExp rgx338("лъ\\B");
+            QRegExp rgx338("лъ\\b");
             str.replace(rgx338, "лъъ"); // correction for гъ in the end
         }
-        QRegExp rgx339("ъ\\B");
+        QRegExp rgx339("ъ\\b");
         str.replace(rgx339, ""); // aleph is not not pronounced in the end
         // aleph before consonants is not pronounced (this regex should be in the end)
         QRegExp rgx340("къ(б|в|г|д|з|й|к|л|м|н|п|р|с|т|ф|х|ц|ш|Ӏ)");
@@ -1153,7 +1120,7 @@ void converter_from_original (QString lang, QString addorig) {
         QRegExp rgx343("ъ(б|в|г|д|з|й|к|л|м|н|п|р|с|т|ф|х|ц|ш|Ӏ)");
         str.replace(rgx343, "\\1");
         // he in the end
-        QRegExp rgx344("Х\\B");
+        QRegExp rgx344("Х\\b");
         str.replace(rgx344, ""); // in the end (not pronounced)
         // waw
         str.replace("В", "в");
@@ -1213,38 +1180,39 @@ void converter_from_original (QString lang, QString addorig) {
         }
 
         // correction
-        QRegExp rgx369("\\Bе");
+        QRegExp rgx369("\\bе");
         str.replace(rgx369, "э");
         if ((lang == "Ingush") || (lang == "Chechen")) {
             str.replace("кх", "кьх"); // in Avar no need of this line
         }
 
+
         QString txtTranslit = str;
         if (addorig == "True") {
             if (txtorig != txtErasm) {
-                txtErasm.front() = txtErasm.front().toUpper();  // capitalize all the words
-                txtReuch.front() = txtReuch.front().toUpper();  // capitalize all the words
+                txtErasm = toCamelCase(txtErasm);  // capitalize all the words
+                txtReuch = toCamelCase(txtReuch);  // capitalize all the words
                 QString txt = txtorig + "\n" + "\t" + "\t" + txtErasm + "\n" + "\t" + "\t" + txtReuch;
                 out << txt << endl;
             }
 
             else if (txtorig != txtTranslit) {
-                txtTranslit.front() = txtTranslit.front().toUpper();
+                txtTranslit = toCamelCase(txtTranslit);
                 QString txt = txtorig + "\n" + "\t" + "\t" + txtTranslit;
                 out << txt << endl;
             }
         }
         else if (addorig == "False") {
             if (txtorig != txtErasm) {
-                txtErasm.front() = txtErasm.front().toUpper();  // capitalize all the words
-                txtReuch.front() = txtReuch.front().toUpper();  // capitalize all the words
+                txtErasm = toCamelCase(txtErasm);   // capitalize all the words
+                txtReuch = toCamelCase(txtReuch);   // capitalize all the words
 
                 QString txt = txtErasm + "/" + txtReuch;
                 out << txt << endl;
             }
 
             else if (txtorig != txtTranslit) {
-                txtTranslit.front() = txtTranslit.front().toUpper();  // capitalize all the words
+                txtTranslit = toCamelCase(txtTranslit);   // capitalize all the words
                 QString txt = txtTranslit;
                 out << txt << endl;
             }
@@ -1294,4 +1262,17 @@ void sorter (QString lang, QString addorig) {
     File2.close();
 }
 
+QString toCamelCase(const QString& s)
+{
+    QStringList parts = s.split(' ', QString::SkipEmptyParts);
+    for (int i = 0; i < parts.size(); ++i)
+        parts[i].replace(0, 1, parts[i][0].toUpper());
 
+    QString s2 = parts.join(" ");
+
+    QStringList parts2 = s2.split('-', QString::SkipEmptyParts);
+    for (int i = 0; i < parts2.size(); ++i)
+        parts2[i].replace(0, 1, parts2[i][0].toUpper());
+
+    return parts2.join("-");
+}
