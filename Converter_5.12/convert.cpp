@@ -1255,6 +1255,11 @@ void sorter (QString lang, QString addorig) {
     QStringList str_lst = str.split("\n");
     str_lst.sort();
     QString output = str_lst.join("\n");
+
+    if (output.at(0) == '\n') {
+        output.remove(0, 1);
+    }
+
     out << output << endl;
 
     File1.flush();
