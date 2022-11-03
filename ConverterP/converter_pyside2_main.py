@@ -1,3 +1,20 @@
+# Copyright (C) 2022 Aleksandr Migunov
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+  
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+# -*- coding: utf-8 -*-
+
 import sys, re
 from converter_pyside2_gui import *
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -21,6 +38,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.actionAvar_without_original.triggered.connect(self.Avar)
         self.ui.actionChechen_with_original.triggered.connect(self.Chechen_original)
         self.ui.actionChechen_without_original.triggered.connect(self.Chechen)
+        self.ui.actionAbout.triggered.connect(self.aboutDialog)
+        self.ui.actionAbout_Qt.triggered.connect(self.aboutQt)
 
     def HG_converter(self, lang, addOrig):
         ##This file is for writing results
@@ -990,7 +1009,14 @@ class MyWin(QtWidgets.QMainWindow):
         self.sorter("Chechen")
         f_chechen = open(r"BibleNamesChechenOnlyOrdered.txt", "r")
         self.ui.textEdit_2.insertPlainText(f_chechen.read())
-        f_chechen.close()        
+        f_chechen.close()     
+        
+    def aboutDialog(self):
+        QtWidgets.QMessageBox.about(self, "About Program", "This is a program for converting Biblical names from original into some Caucasian languages. \n\nCopyright (C) 2022 Aleksandr Migunov \n\nThis program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version. \n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. \n\nYou should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.")     
+   
+    def aboutQt(self):
+        QtWidgets.QMessageBox.aboutQt(self)
+           
         
 
 if __name__ == "__main__":
