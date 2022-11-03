@@ -1,3 +1,19 @@
+/* Copyright (C) 2022 Aleksandr Migunov
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+  
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>. */
+
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "convert.h"
@@ -193,9 +209,6 @@ void MainWindow::on_actionIngush_with_original_triggered()
     ui->textEdit_2->setAcceptRichText(false);
     ui->textEdit_2->setText(text2);
     File2.close();
-
-    //QMessageBox::information(this, tr("Option not available"),
-    //                         tr("This option is not available yet."));
 }
 
 void MainWindow::on_actionIngush_without_original_triggered()
@@ -225,9 +238,6 @@ void MainWindow::on_actionIngush_without_original_triggered()
     ui->textEdit_2->setAcceptRichText(false);
     ui->textEdit_2->setText(text2);
     File2.close();
-
-    //QMessageBox::information(this, tr("Option not available"),
-    //                         tr("This option is not available yet."));
 }
 
 void MainWindow::on_actionAvar_with_original_triggered()
@@ -256,9 +266,6 @@ void MainWindow::on_actionAvar_with_original_triggered()
     ui->textEdit_2->setAcceptRichText(false);
     ui->textEdit_2->setText(text2);
     File2.close();
-
-    //QMessageBox::information(this, tr("Option not available"),
-    //                         tr("This option is not available yet."));
 }
 
 void MainWindow::on_actionAvar_without_original_triggered()
@@ -288,9 +295,6 @@ void MainWindow::on_actionAvar_without_original_triggered()
     ui->textEdit_2->setAcceptRichText(false);
     ui->textEdit_2->setText(text2);
     File2.close();
-
-    //QMessageBox::information(this, tr("Option not available"),
-    //                         tr("This option is not available yet."));
 }
 
 void MainWindow::on_actionChechen_with_original_triggered()
@@ -319,9 +323,6 @@ void MainWindow::on_actionChechen_with_original_triggered()
     ui->textEdit_2->setAcceptRichText(false);
     ui->textEdit_2->setText(text2);
     File2.close();
-
-    //QMessageBox::information(this, tr("Option not available"),
-    //                         tr("This option is not available yet."));
 }
 
 void MainWindow::on_actionChechen_without_original_triggered()
@@ -351,7 +352,33 @@ void MainWindow::on_actionChechen_without_original_triggered()
     ui->textEdit_2->setAcceptRichText(false);
     ui->textEdit_2->setText(text2);
     File2.close();
+}
 
-    //QMessageBox::information(this, tr("Option not available"),
-    //                         tr("This option is not available yet."));
+void MainWindow::on_actionAbout_triggered()
+{
+    QString about_text;
+    about_text = tr("This is a program for converting Biblical names \
+from original into some Caucasian languages.") + "\n\n";
+
+    about_text += tr("Copyright (C) 2022 Aleksandr Migunov") + "\n\n";
+
+    about_text += "This program is free software; you can redistribute it and/or modify \
+it under the terms of the GNU General Public License as published by \
+the Free Software Foundation; either version 3 of the License, or \
+(at your option) any later version. \n\n";
+
+    about_text += "This program is distributed in the hope that it will be useful, \
+but WITHOUT ANY WARRANTY; without even the implied warranty of \
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the \
+GNU General Public License for more details. \n\n";
+
+    about_text += "You should have received a copy of the GNU General Public License \
+along with this program. If not, see <https://www.gnu.org/licenses/>.";
+
+    QMessageBox::about(this, tr("About Program"), about_text);
+}
+
+void MainWindow::on_actionAbout_Qt_triggered()
+{
+    QMessageBox::aboutQt(this);
 }
