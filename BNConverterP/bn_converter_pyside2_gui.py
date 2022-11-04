@@ -123,7 +123,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "BN Converter in Python with PyQt"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "BN Converter in Python with PySide"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Original list</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Converted list</span></p></body></html>"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))

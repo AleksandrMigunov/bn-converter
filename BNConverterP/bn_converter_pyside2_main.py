@@ -939,6 +939,9 @@ class MyWin(QtWidgets.QMainWindow):
         
 
     def Ingush_original(self):
+        QtWidgets.QMessageBox.information(self, "Converting...",
+            "Conversion will begin after you click \"OK\". It might take some time. Please  wait.")
+
         self.ui.textEdit.clear()
         self.ui.textEdit_2.clear()
         f_original = open(r"BibleNames.txt", "r")
@@ -951,6 +954,9 @@ class MyWin(QtWidgets.QMainWindow):
             
 
     def Avar_original(self):
+        QtWidgets.QMessageBox.information(self, "Converting...",
+            "Conversion will begin after you click \"OK\". It might take some time. Please  wait.")
+
         self.ui.textEdit.clear()
         self.ui.textEdit_2.clear()
         f_original = open(r"BibleNames.txt", "r")
@@ -963,6 +969,9 @@ class MyWin(QtWidgets.QMainWindow):
 
 
     def Chechen_original(self):
+        QtWidgets.QMessageBox.information(self, "Converting...",
+            "Conversion will begin after you click \"OK\". It might take some time. Please  wait.")
+
         self.ui.textEdit.clear()
         self.ui.textEdit_2.clear()
         f_original = open(r"BibleNames.txt", "r")
@@ -974,6 +983,9 @@ class MyWin(QtWidgets.QMainWindow):
         f_chechen.close()
 
     def Ingush(self):
+        QtWidgets.QMessageBox.information(self, "Converting...",
+            "Conversion will begin after you click \"OK\". It might take some time. Please  wait.")
+
         self.ui.textEdit.clear()
         self.ui.textEdit_2.clear()
         f_original = open(r"BibleNames.txt", "r")
@@ -987,6 +999,9 @@ class MyWin(QtWidgets.QMainWindow):
             
 
     def Avar(self):
+        QtWidgets.QMessageBox.information(self, "Converting...",
+            "Conversion will begin after you click \"OK\". It might take some time. Please  wait.")
+
         self.ui.textEdit.clear()
         self.ui.textEdit_2.clear()
         f_original = open(r"BibleNames.txt", "r")
@@ -1000,6 +1015,9 @@ class MyWin(QtWidgets.QMainWindow):
 
 
     def Chechen(self):
+        QtWidgets.QMessageBox.information(self, "Converting...",
+            "Conversion will begin after you click \"OK\". It might take some time. Please  wait.")
+
         self.ui.textEdit.clear()
         self.ui.textEdit_2.clear()
         f_original = open(r"BibleNames.txt", "r")
