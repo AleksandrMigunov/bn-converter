@@ -185,6 +185,9 @@ void MainWindow::on_actionSave_converted_triggered()
 
 void MainWindow::on_actionIngush_with_original_triggered()
 {
+    QMessageBox::information(this, tr("Converting..."),
+                             tr("Conversion will begin after you click \"OK\". It might take some time. Please  wait."));
+
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -213,6 +216,9 @@ void MainWindow::on_actionIngush_with_original_triggered()
 
 void MainWindow::on_actionIngush_without_original_triggered()
 {
+    QMessageBox::information(this, tr("Converting..."),
+                             tr("Conversion will begin after you click \"OK\". It might take some time. Please  wait."));
+
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -242,6 +248,9 @@ void MainWindow::on_actionIngush_without_original_triggered()
 
 void MainWindow::on_actionAvar_with_original_triggered()
 {
+    QMessageBox::information(this, tr("Converting..."),
+                             tr("Conversion will begin after you click \"OK\". It might take some time. Please  wait."));
+
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -270,6 +279,9 @@ void MainWindow::on_actionAvar_with_original_triggered()
 
 void MainWindow::on_actionAvar_without_original_triggered()
 {
+    QMessageBox::information(this, tr("Converting..."),
+                             tr("Conversion will begin after you click \"OK\". It might take some time. Please  wait."));
+
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -299,6 +311,9 @@ void MainWindow::on_actionAvar_without_original_triggered()
 
 void MainWindow::on_actionChechen_with_original_triggered()
 {
+    QMessageBox::information(this, tr("Converting..."),
+                             tr("Conversion will begin after you click \"OK\". It might take some time. Please  wait."));
+
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
@@ -327,6 +342,9 @@ void MainWindow::on_actionChechen_with_original_triggered()
 
 void MainWindow::on_actionChechen_without_original_triggered()
 {
+    QMessageBox::information(this, tr("Converting..."),
+                             tr("Conversion will begin after you click \"OK\". It might take some time. Please  wait."));
+
     QString f1 = "BibleNames.txt";
     QFile File1(f1);
     File1.open(QFile::ReadOnly | QFile::Text);
