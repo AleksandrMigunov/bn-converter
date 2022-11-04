@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Copyright (C) 2022 Aleksandr Migunov
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+  
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.-->
+
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BN Converter in Python with PySide2</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>241</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Original list&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>10</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Converted list&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>385</width>
+      <height>500</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>405</x>
+      <y>40</y>
+      <width>385</width>
+      <height>500</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuNew">
+     <property name="title">
+      <string>New</string>
+     </property>
+     <addaction name="actionNew_original"/>
+     <addaction name="actionNew_converted"/>
+    </widget>
+    <widget class="QMenu" name="menuOpen">
+     <property name="title">
+      <string>Open</string>
+     </property>
+     <addaction name="actionOpen_original"/>
+     <addaction name="actionOpen_converted"/>
+    </widget>
+    <widget class="QMenu" name="menuSave">
+     <property name="title">
+      <string>Save</string>
+     </property>
+     <addaction name="actionSave_original"/>
+     <addaction name="actionSave_converted"/>
+    </widget>
+    <addaction name="menuNew"/>
+    <addaction name="menuOpen"/>
+    <addaction name="menuSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuConvert">
+    <property name="title">
+     <string>Convert</string>
+    </property>
+    <widget class="QMenu" name="menuTo_Ingush">
+     <property name="title">
+      <string>To Ingush</string>
+     </property>
+     <addaction name="actionIngush_with_original"/>
+     <addaction name="actionIngush_without_original"/>
+    </widget>
+    <widget class="QMenu" name="menuTo_Avar">
+     <property name="title">
+      <string>To Avar</string>
+     </property>
+     <addaction name="actionAvar_with_original"/>
+     <addaction name="actionAvar_without_original"/>
+    </widget>
+    <widget class="QMenu" name="menuTo_Chechen">
+     <property name="title">
+      <string>To Chechen</string>
+     </property>
+     <addaction name="actionChechen_with_original"/>
+     <addaction name="actionChechen_without_original"/>
+    </widget>
+    <addaction name="menuTo_Ingush"/>
+    <addaction name="menuTo_Avar"/>
+    <addaction name="menuTo_Chechen"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuConvert"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionNew_original">
+   <property name="text">
+    <string>New original</string>
+   </property>
+  </action>
+  <action name="actionNew_converted">
+   <property name="text">
+    <string>New converted</string>
+   </property>
+  </action>
+  <action name="actionOpen_original">
+   <property name="text">
+    <string>Open original</string>
+   </property>
+  </action>
+  <action name="actionOpen_converted">
+   <property name="text">
+    <string>Open converted</string>
+   </property>
+  </action>
+  <action name="actionSave_original">
+   <property name="text">
+    <string>Save original</string>
+   </property>
+  </action>
+  <action name="actionSave_converted">
+   <property name="text">
+    <string>Save converted</string>
+   </property>
+  </action>
+  <action name="actionIngush_with_original">
+   <property name="text">
+    <string>Ingush with original</string>
+   </property>
+  </action>
+  <action name="actionIngush_without_original">
+   <property name="text">
+    <string>Ingush without original</string>
+   </property>
+  </action>
+  <action name="actionAvar_with_original">
+   <property name="text">
+    <string>Avar with original</string>
+   </property>
+  </action>
+  <action name="actionAvar_without_original">
+   <property name="text">
+    <string>Avar without original</string>
+   </property>
+  </action>
+  <action name="actionChechen_with_original">
+   <property name="text">
+    <string>Chechen with original</string>
+   </property>
+  </action>
+  <action name="actionChechen_without_original">
+   <property name="text">
+    <string>Chechen without original</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
