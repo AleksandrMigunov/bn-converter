@@ -1,5 +1,5 @@
 # Copyright (C) 2022 Aleksandr Migunov
-
+import os.path
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License, or
@@ -31,6 +31,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.actionOpen_converted.triggered.connect(self.openFile_2)
         self.ui.actionNew_original.triggered.connect(self.clearText_1)
         self.ui.actionNew_converted.triggered.connect(self.clearText_2)
+        self.ui.actionConvert_from_File.triggered.connect(self.convertFile)
 
         self.ui.actionIngush_with_original.triggered.connect(self.Ingush_original)
         self.ui.actionIngush_without_original.triggered.connect(self.Ingush)
@@ -41,26 +42,32 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.actionAbout.triggered.connect(self.aboutDialog)
         self.ui.actionAbout_Qt.triggered.connect(self.aboutQt)
 
-    def HG_converter(self, lang, addOrig):
+    def HG_converter(self, lang, addOrig, input="", output=""):
         ##This file is for writing results
-        if (addOrig == True):
-            if (lang == "Ingush"):
-                f1 = open(r"BibleNamesIngush.txt", "w")	
-            elif (lang == "Avar"):
-                f1 = open(r"BibleNamesAvar.txt", "w")
-            elif (lang == "Chechen"):
-                f1 = open(r"BibleNamesChechen.txt", "w")
-        elif (addOrig == False):
-            if (lang == "Ingush"):
-                f1 = open(r"BibleNamesIngushOnly.txt", "w")	
-            elif (lang == "Avar"):
-                f1 = open(r"BibleNamesAvarOnly.txt", "w")
-            elif (lang == "Chechen"):
-                f1 = open(r"BibleNamesChechenOnly.txt", "w")
+        file1 = output
+        if file1 == "":
+            if (addOrig == True):
+                if (lang == "Ingush"):
+                    file1 = "BibleNamesIngush.txt"
+                elif (lang == "Avar"):
+                    file1 = "BibleNamesAvar.txt"
+                elif (lang == "Chechen"):
+                    file1 = "BibleNamesChechen.txt"
+            elif (addOrig == False):
+                if (lang == "Ingush"):
+                    file1 = "BibleNamesIngushOnly.txt"
+                elif (lang == "Avar"):
+                    file1 = "BibleNamesAvarOnly.txt"
+                elif (lang == "Chechen"):
+                    file1 = "BibleNamesChechenOnly.txt"
+        f1 = open(file1, "w", encoding='utf-8')
         ##This file contains data, it will be open only for reading
-        f2 = open(r"BibleNames.txt", "r") 
-          
-        for line in f2:                         
+        file2 = input
+        if file2 == "":
+            file2 = "BibleNames.txt"
+        f2 = open(file2, "r", encoding='utf-8')
+
+        for line in f2:
             txt = line
             txtOrig = line
 
@@ -841,6 +848,7 @@ class MyWin(QtWidgets.QMainWindow):
         f1.close()
         f2.close()
 
+
     def sorter(self, lang):
         if (lang == "Ingush"):
             f1 = open(r"BibleNamesIngushOnly.txt", "r")
@@ -863,6 +871,20 @@ class MyWin(QtWidgets.QMainWindow):
         f1.close()
         f2.close()    
     
+    def sorter2(self, input, output):
+        f1 = open(input, "r")
+        f2 = open(output, "w")
+
+        txt = []
+        for line in f1:
+            line = line.replace('(Ar)', '')
+            txt.append(line)
+        txt.sort()
+        "".join(txt)
+        for word in txt:
+            f2.write(word)
+        f1.close()
+        f2.close()
 
     def closeEvent(self, e):
         result = QtWidgets.QMessageBox.question(self, "Confirm Dialog",
@@ -883,7 +905,6 @@ class MyWin(QtWidgets.QMainWindow):
             self.writeFile = open(self.fileName, 'w', encoding='utf-8')
             self.writeFile.write(self.ui.textEdit.toPlainText())
             self.writeFile.close()
-            self.ui.statusbar.showMessage('Saved to %s' % self.fileName)
 
     def saveToFile_2(self):
         options = QtWidgets.QFileDialog.Options()
@@ -893,7 +914,6 @@ class MyWin(QtWidgets.QMainWindow):
             self.writeFile = open(self.fileName, 'w', encoding='utf-8')
             self.writeFile.write(self.ui.textEdit_2.toPlainText())
             self.writeFile.close()
-            self.ui.statusbar.showMessage('Saved to %s' % self.fileName)        
 
     def openFile_1(self):
         options = QtWidgets.QFileDialog.Options()
@@ -904,7 +924,6 @@ class MyWin(QtWidgets.QMainWindow):
             self.openF = open(self.fileName, 'r', encoding='utf-8')
             self.ui.textEdit.insertPlainText(self.openF.read())
             self.openF.close()
-            self.ui.statusbar.showMessage('%s opened' % self.fileName)
 
     def openFile_2(self):
         options = QtWidgets.QFileDialog.Options()
@@ -915,7 +934,6 @@ class MyWin(QtWidgets.QMainWindow):
             self.openF = open(self.fileName, 'r', encoding='utf-8')
             self.ui.textEdit_2.insertPlainText(self.openF.read())
             self.openF.close()
-            self.ui.statusbar.showMessage('%s opened' % self.fileName)
 
 
     def clearText_1(self):
@@ -936,7 +954,94 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.textEdit_2.clear()
         else:
             pass
-        
+
+
+    def convertFile(self):
+        options = QtWidgets.QFileDialog.Options()
+        input,_ = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "",
+                                                                 "Text Files (*.txt)", options=options)
+        if input:
+            self.ui.textEdit.clear()
+            self.openF = open(input, 'r', encoding='utf-8')
+            self.ui.textEdit.insertPlainText(self.openF.read())
+            self.openF.close()
+
+            items = ["Ingush with original", "Ingush without original",
+                     "Avar with original", "Avar without original",
+                     "Chechen with original", "Chechen without original"]
+
+            item = QtWidgets.QInputDialog.getItem(self, "Language to convert to",
+                                                  "Choose the language and contents of the output file: ",
+                                                  items, current=0, editable=False)
+
+            output = ""
+            lang = ""
+            addorig = True
+
+            if item[0] == "Ingush with original":
+                lang = "Ingush"
+                addorig = True
+                if ".txt" in input:
+                    output = input[:-4] + "Ingush" + ".txt"
+                else:
+                    output = "Ingush.txt"
+            elif item[0] == "Ingush without original":
+                lang = "Ingush"
+                addorig = False
+                if ".txt" in input:
+                    output = input[:-4] + "IngushOnly" + ".txt"
+                else:
+                    output = "IngushOnly.txt"
+            elif item[0] == "Avar with original":
+                lang = "Avar"
+                addorig = True
+                if ".txt" in input:
+                    output = input[:-4] + "Avar" + ".txt"
+                else:
+                    output = "Avar.txt"
+            elif item[0] == "Avar without original":
+                lang = "Avar"
+                addorig = False
+                if ".txt" in input:
+                    output = input[:-4] + "AvarOnly" + ".txt"
+                else:
+                    output = "AvarOnly.txt"
+            elif item[0] == "Chechen with original":
+                lang = "Chechen"
+                addorig = True
+                if ".txt" in input:
+                    output = input[:-4] + "Chechen" + ".txt"
+                else:
+                    output = "Chechen.txt"
+            elif item[0] == "Chechen without original":
+                lang = "Chechen"
+                addorig = False
+                if ".txt" in input:
+                    output = input[:-4] + "ChechenOnly" + ".txt"
+                else:
+                    output = "ChechenOnly.txt"
+
+            QtWidgets.QMessageBox.information(self, "Converting...",
+                "Conversion will begin after you click \"OK\". It might take some time. Please  wait.")
+
+            self.HG_converter(lang, addorig, input, output)
+
+            sorted_file = ""
+            if addorig == False:
+                sorted_file = output[:-4] + "ordered" + ".txt"
+                self.sorter2(output, sorted_file)
+
+            if addorig == True:
+                self.ui.textEdit_2.clear()
+                self.openF = open(output, 'r', encoding='utf-8')
+                self.ui.textEdit_2.insertPlainText(self.openF.read())
+                self.openF.close()
+            else:
+                self.ui.textEdit_2.clear()
+                self.openF = open(sorted_file, 'r', encoding='utf-8')
+                self.ui.textEdit_2.insertPlainText(self.openF.read())
+                self.openF.close()
+
 
     def Ingush_original(self):
         QtWidgets.QMessageBox.information(self, "Converting...",
@@ -1034,8 +1139,7 @@ class MyWin(QtWidgets.QMainWindow):
    
     def aboutQt(self):
         QtWidgets.QMessageBox.aboutQt(self)
-           
-        
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

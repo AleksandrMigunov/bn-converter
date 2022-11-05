@@ -92,6 +92,8 @@ class Ui_MainWindow(object):
         self.actionAbout.setObjectName("actionAbout")
         self.actionAbout_Qt = QtWidgets.QAction(MainWindow)
         self.actionAbout_Qt.setObjectName("actionAbout_Qt")
+        self.actionConvert_from_File = QtWidgets.QAction(MainWindow)
+        self.actionConvert_from_File.setObjectName("actionConvert_from_File")
         self.menuNew.addAction(self.actionNew_original)
         self.menuNew.addAction(self.actionNew_converted)
         self.menuOpen.addAction(self.actionOpen_original)
@@ -101,6 +103,7 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.menuNew.menuAction())
         self.menuFile.addAction(self.menuOpen.menuAction())
         self.menuFile.addAction(self.menuSave.menuAction())
+        self.menuFile.addAction(self.actionConvert_from_File)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
         self.menuTo_Ingush.addAction(self.actionIngush_with_original)
@@ -123,7 +126,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "BN Converter in Python with PySide"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "BN Converter in Python with PySide2"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Original list</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Converted list</span></p></body></html>"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
@@ -150,3 +153,4 @@ class Ui_MainWindow(object):
         self.actionChechen_without_original.setText(_translate("MainWindow", "Chechen without original"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
         self.actionAbout_Qt.setText(_translate("MainWindow", "About Qt"))
+        self.actionConvert_from_File.setText(_translate("MainWindow", "Convert from file"))
