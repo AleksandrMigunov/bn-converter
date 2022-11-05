@@ -114,6 +114,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.-->
     <addaction name="menuNew"/>
     <addaction name="menuOpen"/>
     <addaction name="menuSave"/>
+    <addaction name="actionConvert_from_File"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -231,6 +232,11 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.-->
   <action name="actionAbout_Qt">
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionConvert_from_File">
+   <property name="text">
+    <string>Convert from file</string>
    </property>
   </action>
  </widget>

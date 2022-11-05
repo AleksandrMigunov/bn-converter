@@ -22,6 +22,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>. */
 #include <QtCore>
 
 //public:
-void converter_from_original (QString lang, QString addorig);
+void converter_from_original (QString lang, QString addorig, QString input="", QString output="");
+void sorter (QString lang, QString addorig, QString input, QString output);
 void sorter (QString lang, QString addorig);
 QString toCamelCase(const QString& s);

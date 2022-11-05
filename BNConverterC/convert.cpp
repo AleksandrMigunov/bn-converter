@@ -19,31 +19,43 @@ along with this program. If not, see <https://www.gnu.org/licenses/>. */
 #include <QRegExp>
 #include <QMessageBox>
 
-void converter_from_original (QString lang, QString addorig) {
+void converter_from_original (QString lang, QString addorig, QString input, QString output) {
     QString f1 = "";
-    if (addorig == "True") {
-        if (lang == "Ingush") {
-            f1 = "BibleNamesIngush.txt";
+    if (output != "") {
+        f1 = output;
+    }
+    else {
+        if (addorig == "True") {
+            if (lang == "Ingush") {
+                f1 = "BibleNamesIngush.txt";
+            }
+            else if (lang == "Avar") {
+                f1 = "BibleNamesAvar.txt";
+            }
+            else if (lang == "Chechen") {
+                f1 = "BibleNamesChechen.txt";
+            }
         }
-        else if (lang == "Avar") {
-            f1 = "BibleNamesAvar.txt";
-        }
-        else if (lang == "Chechen") {
-            f1 = "BibleNamesChechen.txt";
+        else if (addorig == "False") {
+            if (lang == "Ingush") {
+                f1 = "BibleNamesIngushOnly.txt";
+            }
+            else if (lang == "Avar") {
+                f1 = "BibleNamesAvarOnly.txt";
+            }
+            else if (lang == "Chechen") {
+                f1 = "BibleNamesChechenOnly.txt";
+            }
         }
     }
-    else if (addorig == "False") {
-        if (lang == "Ingush") {
-            f1 = "BibleNamesIngushOnly.txt";
-        }
-        else if (lang == "Avar") {
-            f1 = "BibleNamesAvarOnly.txt";
-        }
-        else if (lang == "Chechen") {
-            f1 = "BibleNamesChechenOnly.txt";
-        }
+
+    QString f2;
+    if (input != "") {
+        f2 = input;
     }
-    QString f2 = "BibleNames.txt";
+    else {
+        f2 = "BibleNames.txt";
+    }
     QFile File1(f1);  // This file is for writing results.
     QFile File2(f2);  // This file contains data and will be opened only for reading.
     File1.open(QFile::WriteOnly | QFile::Text);
@@ -53,7 +65,6 @@ void converter_from_original (QString lang, QString addorig) {
     QTextStream in(&File2);
     in.setCodec("UTF-8");
 
-    //if ((File2.open(QIODevice::ReadOnly)) || (File1.open(QIODevice::WriteOnly))) {
     QString str;
     while (!File2.atEnd()) {
         str = in.readLine();
@@ -1239,6 +1250,38 @@ void converter_from_original (QString lang, QString addorig) {
     File2.close();
 }
 
+void sorter (QString lang, QString addorig, QString input, QString output) {
+    if (((lang != "Ingush") && (lang != "Avar") && (lang != "Chechen")) || (addorig == "True")) {
+        return;
+    }
+    if (addorig == "False") {
+        QFile File1(output);  // This file is for writing results.
+        QFile File2(input);  // This file contains data and will be opened only for reading.
+        File1.open(QFile::WriteOnly | QFile::Text);
+        QTextStream out(&File1);
+        out.setCodec("UTF-8");
+        File2.open(QFile::ReadOnly | QFile::Text);
+        QTextStream in(&File2);
+        in.setCodec("UTF-8");
+
+        QString str = in.readAll();
+        str = str.replace("(Ar)", "");
+        QStringList str_lst = str.split("\n");
+        str_lst.sort();
+        QString output = str_lst.join("\n");
+
+        if (output.at(0) == '\n') {
+            output.remove(0, 1);
+        }
+
+        out << output << endl;
+
+        File1.flush();
+        File1.close();
+        File2.close();
+    }
+}
+
 void sorter (QString lang, QString addorig) {
     if (addorig == "True") {
         return;
@@ -1246,15 +1289,15 @@ void sorter (QString lang, QString addorig) {
     QString f1, f2;
     if (lang == "Ingush") {
         f2 = "BibleNamesIngushOnly.txt";
-        f1 = "BibleNamesIngushOnlyordered.txt";
+        f1 = "BibleNamesIngushOnlyOrdered.txt";
     }
     else if (lang == "Avar") {
         f2 = "BibleNamesAvarOnly.txt";
-        f1 = "BibleNamesAvarOnlyordered.txt";
+        f1 = "BibleNamesAvarOnlyOrdered.txt";
     }
     else if (lang == "Chechen") {
         f2 = "BibleNamesChechenOnly.txt";
-        f1 = "BibleNamesChechenOnlyordered.txt";
+        f1 = "BibleNamesChechenOnlyOrdered.txt";
     }
 
     QFile File1(f1);  // This file is for writing results.

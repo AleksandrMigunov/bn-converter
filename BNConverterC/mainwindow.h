@@ -66,6 +66,8 @@ private slots:
 
     void on_actionAbout_Qt_triggered();
 
+    void on_actionConvert_from_File_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
