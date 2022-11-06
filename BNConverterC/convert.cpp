@@ -66,7 +66,7 @@ void converter_from_original (QString lang, QString addorig, QString input, QStr
     in.setCodec("UTF-8");
 
     QString str;
-    while (!File2.atEnd()) {
+    while (!in.atEnd()) {
         str = in.readLine();
         QString txtorig = str;
 
